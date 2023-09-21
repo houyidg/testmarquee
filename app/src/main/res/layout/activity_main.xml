@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clipChildren="false"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/iv_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@mipmap/icon_setting"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.wl.handdanmu.views.MarqueeTextView2
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="50sp"
+        android:text="欢迎来到跑x少时诵诗书少时诵诗书是撒是撒是撒是撒是撒马灯高端玩家局，这是高端玩法示例~"
+        android:textColor="@color/white" />
+
+    <include
+        android:id="@+id/include_menu"
+        layout="@layout/layout_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>
