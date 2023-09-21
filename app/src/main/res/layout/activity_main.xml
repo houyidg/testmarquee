@@ -19,8 +19,8 @@
 
     <com.wl.handdanmu.views.MarqueeTextView2
         android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="50sp"
         android:text="欢迎来到跑x少时诵诗书少时诵诗书是撒是撒是撒是撒是撒马灯高端玩家局，这是高端玩法示例~"
         android:textColor="@color/white" />
