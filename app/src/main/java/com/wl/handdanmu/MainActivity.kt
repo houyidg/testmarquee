@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.wl.handdanmu.databinding.ActivityMainBinding
@@ -17,12 +18,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // 设置为全屏
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
         setContentView(mBinding.root)
-//        mBinding.autoScrollTextView.apply {
-//            setText("我是大哥xxa少时诵诗书少时诵诗书是撒是撒是撒休息休息休息休息")
-//        }
-        mBinding.tv.startMarquee()
         closeDrawer()
+
+        mBinding.tv.startMarquee()
+
         mBinding.ivSetting.setOnClickListener {
             openDrawer()
         }
@@ -38,10 +43,30 @@ class MainActivity : AppCompatActivity() {
             tvFont2.setupFontClick(mBinding)
             tvFont3.setupFontClick(mBinding)
             tvFont4.setupFontClick(mBinding)
-
             tvFont0.callOnClick()
 
-            // 添加 TextWatcher 监听文本变化
+            tvSpeed0.setupSpeedClick(mBinding)
+            tvSpeed1.setupSpeedClick(mBinding)
+            tvSpeed15.setupSpeedClick(mBinding)
+            tvSpeed2.setupSpeedClick(mBinding)
+            tvSpeed3.setupSpeedClick(mBinding)
+            tvSpeed0.callOnClick()
+
+            tvWhiteColor.setOnClickListener {
+                mBinding.tv.setTextColor(resources.getColor(R.color.white))
+            }
+
+            tvOrangeColor.setOnClickListener {
+                mBinding.tv.setTextColor(resources.getColor(R.color.orange))
+            }
+
+            tvRedColor.setOnClickListener {
+                mBinding.tv.setTextColor(resources.getColor(R.color.red))
+            }
+            tvTeaColor.setOnClickListener {
+                mBinding.tv.setTextColor(resources.getColor(R.color.teal))
+            }
+
             // 添加 TextWatcher 监听文本变化
             etInputShowTxt.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
@@ -73,10 +98,23 @@ class MainActivity : AppCompatActivity() {
             mBinding.includeMenu.setupFontDefault()
             isSelected = true
             mBinding.tv.setTextSize(text.toString().toFloat())
-//            mBinding.autoScrollTextView.textSize = text.toString().toFloat()
         }
     }
 
+    private fun TextView.setupSpeedClick(mBinding: ActivityMainBinding) {
+        setOnClickListener {
+            mBinding.includeMenu.setupSpeedDefault()
+            isSelected = true
+            mBinding.tv.setScrollSpeed(text.toString().replace("x","").toFloat())
+        }
+    }
+    private fun LayoutMenuBinding.setupSpeedDefault() {
+        tvSpeed0.isSelected = false
+        tvSpeed1.isSelected = false
+        tvSpeed15.isSelected = false
+        tvSpeed2.isSelected = false
+        tvSpeed3.isSelected = false
+    }
     private fun LayoutMenuBinding.setupFontDefault() {
         tvFont0.isSelected = false
         tvFont1.isSelected = false
