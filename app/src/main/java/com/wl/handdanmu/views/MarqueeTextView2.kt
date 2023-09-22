@@ -11,7 +11,8 @@ import android.view.View
 
 
 class MarqueeTextView2(context: Context, attrs: AttributeSet?) : View(context, attrs), ITextSetUp {
-    private var text = "This is danMu"
+    val default = "This is danMu"
+    private var text = default
 
     // 要显示的文本
     private var textColor = Color.WHITE // 文本颜色
@@ -46,11 +47,12 @@ class MarqueeTextView2(context: Context, attrs: AttributeSet?) : View(context, a
 
     var textWidth = 0f
     fun startMarquee() {
-        val textWidth = textPaint.measureText(text)
+        var textWidth: Float
         val marqueeRunnable = object : Runnable {
             override fun run() {
                 textX -= scrollSpeed
-                if (textX < -textWidth * 4) {
+                textWidth = textPaint.measureText(text)
+                if (textX < -textWidth ) {
                     textX = viewWidth.toFloat()
                 }
                 invalidate()
@@ -74,6 +76,9 @@ class MarqueeTextView2(context: Context, attrs: AttributeSet?) : View(context, a
 
     override fun setText(txt: String) {
         text = txt
+        if (txt.isEmpty()){
+            text = default
+        }
         textWidth = textPaint.measureText(text)
     }
 
