@@ -23,11 +23,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            //删除无用的文件
+            isShrinkResources =  true
+            //zip压缩
+            isZipAlignEnabled =  true
         }
     }
     compileOptions {
